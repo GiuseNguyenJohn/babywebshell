@@ -11,6 +11,7 @@ import argparse
 import cmd
 import subprocess
 from colorama import Fore, Style
+from pprint import pprint
 from webwizard import webwizard
 
 
@@ -49,6 +50,10 @@ class BebshellInterpreter(cmd.Cmd):
     Type "help <cmd>" or "? cmd" to view help for a command."""
     prompt = green("(bebsh) ")
 
+    def do_robots(self, line):
+        """Sends a request for robots.txt, and returns a dictionary with organized information if it exists."""
+        pprint(self.wizard.crawl_robots())
+
     def do_shell(self, line):
         "Run a shell command (you can also use ! <cmd>)"
         print("running shell command:", line, '\n')
@@ -74,7 +79,7 @@ def main() -> None:
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
     # webwizard setup
-    wizard = webwizard.Wizard(args.url)
+    BebshellInterpreter.wizard = webwizard.Wizard(args.url)
     BebshellInterpreter().cmdloop()
 
 
