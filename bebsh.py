@@ -19,10 +19,9 @@ def complete_cmd(text: str, options: list) -> list:
     """Takes in user-typed text and returns valid options."""
 
     if not text:
-        completions = options
+        return options
     else:
-        completions = [x for x in options if x.startswith(text)]
-    return completions
+        return [x for x in options if x.startswith(text)]
 
 
 def cyan(text: str) -> str:
@@ -51,16 +50,22 @@ class BebshellInterpreter(cmd.Cmd):
     prompt = green("(bebsh) ")
 
     def do_robots(self, line):
-        """Sends a request for robots.txt, and returns a dictionary with organized information if it exists."""
+        """Sends a request for robots.txt, and returns a dictionary
+        with organized information if it exists."""
         pprint(self.wizard.crawl_robots())
+
+    def do_comments(self, line):
+        """Mirrors website and returns a list of js, css, and html comments."""
+        print(green("[+] Mirroring {}...".format(self.wizard.url)))
+        self.wizard.mirror()
+        print(green("COMMENTS:"))
+        pprint(self.wizard.get_comments())
 
     def do_shell(self, line):
         "Run a shell command (you can also use ! <cmd>)"
-        print("running shell command:", line, '\n')
-        sub_cmd = subprocess.Popen(line,
-                                   shell=True,
-                                   stdout=subprocess.PIPE)
-        output = sub_cmd.communicate()[0].decode('utf-8')
+        print("Running shell command:", line, "\n")
+        sub_cmd = subprocess.Popen(line, shell=True, stdout=subprocess.PIPE)
+        output = sub_cmd.communicate()[0].decode("utf-8")
         print(output)
 
     def do_q(self, line):
@@ -76,10 +81,18 @@ def main() -> None:
     # argparse
     parser = argparse.ArgumentParser(description="")
     parser.add_argument("-u", "--url", type=str, help="target url", required=True)
+    parser.add_argument(
+        "-d",
+        "--directory",
+        type=str,
+        help="directory to store mirrored files",
+        required=False,
+        default="/tmp/",
+    )
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
     # webwizard setup
-    BebshellInterpreter.wizard = webwizard.Wizard(args.url)
+    BebshellInterpreter.wizard = webwizard.Wizard(args.url, directory=args.directory)
     BebshellInterpreter().cmdloop()
 
 
