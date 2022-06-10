@@ -9,3 +9,4 @@ class BebshTestCase(unittest.TestCase):
 
     def __init__(self):
         self.wizard = webwizard.Wizard('https:/google.com')
+        pass

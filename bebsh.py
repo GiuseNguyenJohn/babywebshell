@@ -17,7 +17,6 @@ from webwizard import webwizard
 
 def complete_cmd(text: str, options: list) -> list:
     """Takes in user-typed text and returns valid options."""
-
     if not text:
         return options
     else:
@@ -26,19 +25,16 @@ def complete_cmd(text: str, options: list) -> list:
 
 def cyan(text: str) -> str:
     """Return text wrapped with a cyan ANSI escape sequence."""
-
     return Fore.CYAN + Style.BRIGHT + text + Style.RESET_ALL
 
 
 def red(text: str) -> str:
     """Return text wrapped with a red ANSI escape sequence."""
-
     return Fore.RED + Style.BRIGHT + text + Style.RESET_ALL
 
 
 def green(text: str) -> str:
     """Return text wrapped with a green ANSI escape sequence."""
-
     return Fore.GREEN + Style.BRIGHT + text + Style.RESET_ALL
 
 
@@ -56,10 +52,25 @@ class BebshellInterpreter(cmd.Cmd):
 
     def do_comments(self, line):
         """Mirrors website and returns a list of js, css, and html comments."""
-        print(green("[+] Mirroring {}...".format(self.wizard.url)))
+        print(green("[+] Mirroring {}...\n".format(self.wizard.url)))
         self.wizard.mirror()
         print(green("COMMENTS:"))
         pprint(self.wizard.get_comments())
+
+    def do_cookies(self, line):
+        """Gets any cookies sent by the server after requesting the URL."""
+        pprint(self.wizard.get_cookies())
+
+    def do_parse_for_flag(self, crib):
+        """parse_for_flag <CRIB>
+        Mirrors website, parses it for specified crib and returns list of possible flags."""
+        if crib:
+            print(green("[+] Mirroring {}...\n".format(self.wizard.url)))
+            self.wizard.mirror()
+            print(green("POSSIBLE FLAGS:"))
+            pprint(self.wizard.parse_website_for_flag(crib))
+        else:
+            print(red("Crib cannot be empty!"))
 
     def do_shell(self, line):
         "Run a shell command (you can also use ! <cmd>)"
