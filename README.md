@@ -36,6 +36,7 @@ Commands available:
 - `q` and `EOF (Ctrl+d)` - Quit the program.
 
 ## Screenshots
+![PicoCTF Example](./images/bebsh_demo.png)
 
 ## Setup
 ```
