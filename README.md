@@ -56,6 +56,7 @@ I'm open to suggestions!
 
 To Do:
 - add more commands
+- incorporate `selenium` to control a browser side by side
 
 ## Contact
 Created by [@Magicks52](https://github.com/Magicks52) - feel free to contact me!
