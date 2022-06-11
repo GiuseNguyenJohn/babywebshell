@@ -41,8 +41,25 @@ Commands available:
 ## Setup
 ```
 $ git clone https://github.com/Magicks52/babywebshell.git
-
+$ cd ./babywebshell/
 # install required packages
 $ pip3 install -r requirements.txt
+$ python3 bebsh.py -h
 ```
 **Note: you may have to run bebsh.py with `sudo` to mirror remote website.**
+
+## Project Status
+Project is: _complete (for now)_
+
+## Room for Improvement
+I'm open to suggestions!
+
+To Do:
+- add more commands
+
+## Contact
+Created by [@Magicks52](https://github.com/Magicks52) - feel free to contact me!
+- Discord - John Nguyen#7086
+
+## License
+This project is open source and available under the [MIT License](./LICENSE).
