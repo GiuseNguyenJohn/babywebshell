@@ -6,7 +6,7 @@ A terminal application that utilizes webwizard to automate easy web CTF challeng
 
 ## Table of Contents
 * [General Info](#general-information)
-* [Technologies](#technologies)
+* [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
