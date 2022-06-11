@@ -26,6 +26,8 @@ Helpful features:
 - command autocompletion
 - running shell commands
 - colored prompt and status information
+- specify directory to mirror website to
+- option to open URL in default browser
 
 Commands available:
 - `robots` - Sends a request for robots.txt, and returns a dictionary with organized information if it exists.
@@ -36,7 +38,8 @@ Commands available:
 - `q` and `EOF (Ctrl+d)` - Quit the program.
 
 ## Screenshots
-![PicoCTF Example](./images/bebsh_demo.png)
+![PicoCTF Example 1](./images/bebsh_demo1.png)
+![PicoCTF Example 2](./images/bebsh_demo2.png)
 
 ## Setup
 ```
@@ -56,7 +59,7 @@ I'm open to suggestions!
 
 To Do:
 - add more commands
-- incorporate `selenium` to control a browser side by side
+- automate logins and fuzzing forms somehow 
 
 ## Contact
 Created by [@Magicks52](https://github.com/Magicks52) - feel free to contact me!

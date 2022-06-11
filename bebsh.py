@@ -10,6 +10,7 @@ import argcomplete
 import argparse
 import cmd
 import subprocess
+import webbrowser
 from colorama import Fore, Style
 from pprint import pprint
 from webwizard import webwizard
@@ -91,7 +92,14 @@ class BebshellInterpreter(cmd.Cmd):
 def main() -> None:
     # argparse
     parser = argparse.ArgumentParser(description="")
-    parser.add_argument("-u", "--url", type=str, help="target url", required=True)
+    parser.add_argument("-u", "--url", type=str, help="target URL", required=True)
+    parser.add_argument(
+        "-o",
+        "--open-url",
+        help="open URL in a new window",
+        action="store_true",
+        required=False,
+    )
     parser.add_argument(
         "-d",
         "--directory",
@@ -102,6 +110,9 @@ def main() -> None:
     )
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
+    # open URL if -o is specified
+    if args.open_url:
+        webbrowser.open(args.url, new=1, autoraise=True)
     # webwizard setup
     BebshellInterpreter.wizard = webwizard.Wizard(args.url, directory=args.directory)
     BebshellInterpreter().cmdloop()
