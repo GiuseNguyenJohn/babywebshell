@@ -2,7 +2,7 @@
 ![GitHub](https://img.shields.io/github/license/Magicks52/babywebshell)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A terminal application that utilizes webwizard to automate easy web CTF challenges.
+A terminal application that utilizes ![webwizard](https://github.com/Magicks52/webwizard) to automate easy web CTF challenges.
 
 ## Table of Contents
 * [General Info](#general-information)
