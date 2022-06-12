@@ -96,7 +96,7 @@ def main() -> None:
     parser.add_argument(
         "-o",
         "--open-url",
-        help="open URL in a new window",
+        help="Open URL in a new window",
         action="store_true",
         required=False,
     )
@@ -104,7 +104,7 @@ def main() -> None:
         "-d",
         "--directory",
         type=str,
-        help="directory to store mirrored files",
+        help="Directory to store mirrored files. If not specified, output is stored in /tmp by default.",
         required=False,
         default="/tmp/",
     )
